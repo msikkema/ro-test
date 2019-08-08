@@ -3,7 +3,7 @@ ThemeProvider(:theme='theme')
   #app
     Navbar
     .divider
-      InfoPanel
+      InfoPanel(:dog='currentDog')
 </template>
 
 <script>
@@ -13,6 +13,7 @@ import InfoPanel from './components/InfoPanel'
 import styled from 'vue-styled-components'
 import theme from './theme/reachOutTheme'
 import { StyledH1 } from './theme/headings'
+import { getRandomDog } from './services/dogService'
 
 
 const Wrapper = styled.div`
@@ -35,8 +36,13 @@ export default {
   },
   data: function() {
     return {
-      theme
+      theme,
+      currentDog: null
     }
+  },
+  async mounted() {
+    this.currentDog = await getRandomDog()
+    console.log(this.currentDog)
   }
 }
 </script>

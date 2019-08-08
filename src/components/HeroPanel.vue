@@ -5,8 +5,8 @@ HeroWrapper
       StyledH1 {{ title }}
     ButtonWrapper.button-wrapper
       ButtonGroup
-        Button(label='New Random Dog')
-        Button(label='Save This Dog')
+        Button(label='New Random Dog', :handleClick='makeAlert')
+        Button(label='Save This Dog', :handleClick='makeAlert')
 </template>
 
 <script>
@@ -48,6 +48,11 @@ export default {
   props: {
     title: String,
     buttons: Object
+  },
+  methods: {
+    makeAlert() {
+      window.alert('button clicked')
+    }
   }
 }
 </script>

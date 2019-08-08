@@ -1,5 +1,5 @@
 <template lang="pug">
-  HeroPanel(title='Random dog breed will go here')
+  HeroPanel(:title='dog.displayName')
 </template>
 
 <script>
@@ -8,6 +8,9 @@ import HeroPanel from './HeroPanel'
 export default {
   components: {
     HeroPanel
+  },
+  props: {
+    dog: Object
   }
 }
 </script>
