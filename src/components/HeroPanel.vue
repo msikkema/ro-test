@@ -5,7 +5,7 @@ HeroWrapper
       StyledH1 {{ title }}
     ButtonWrapper.button-wrapper
       ButtonGroup
-        Button(label='New Random Dog', :handleClick='makeAlert')
+        Button(label='New Random Dog', :handleClick='handleNewDog')
         Button(label='Save This Dog', :handleClick='makeAlert')
 </template>
 
@@ -47,7 +47,8 @@ export default {
   },
   props: {
     title: String,
-    buttons: Object
+    buttons: Object,
+    handleNewDog: Function
   },
   methods: {
     makeAlert() {
