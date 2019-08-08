@@ -14,7 +14,10 @@ export default {
 
     smallPanelPrimary: '#333333',
     smallPanelSecondary: '#333333',
-    smallPanelBackground: '#E7F1F9'
+    smallPanelBackground: '#E7F1F9',
+
+    buttonBackground: '#ffef5e',
+    buttonColor: '#333'
   },
   breakpoints: {
     tablet: '720px',

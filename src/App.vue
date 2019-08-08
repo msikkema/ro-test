@@ -2,11 +2,14 @@
 ThemeProvider(:theme='theme')
   #app
     Navbar
+    .divider
+      InfoPanel
 </template>
 
 <script>
 import { ThemeProvider } from 'vue-styled-components'
 import Navbar from './components/Navbar'
+import InfoPanel from './components/InfoPanel'
 import styled from 'vue-styled-components'
 import theme from './theme/reachOutTheme'
 import { StyledH1 } from './theme/headings'
@@ -27,7 +30,8 @@ export default {
     Navbar,
     ThemeProvider,
     Wrapper,
-    TestHeading
+    TestHeading,
+    InfoPanel
   },
   data: function() {
     return {
