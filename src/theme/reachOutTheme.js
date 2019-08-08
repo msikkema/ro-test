@@ -17,7 +17,10 @@ export default {
     smallPanelBackground: '#E7F1F9',
 
     buttonBackground: '#ffef5e',
-    buttonColor: '#333'
+    buttonColor: '#333',
+
+    labelBackground: '#FFFFFF',
+    labelColor: '#333'
   },
   breakpoints: {
     tablet: '720px',

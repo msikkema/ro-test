@@ -16,7 +16,7 @@ import { VerticalCenter, DeadCenter, AlignRight, ButtonGroup } from '../theme/po
 import Button from './Button'
 
 const ButtonWrapper = styled(AlignRight)`
-  padding-top: 50px;
+  padding-top: 30px;
   width: 100%;
 `
 
@@ -28,7 +28,7 @@ const HeroWrapper = styled(VerticalCenter)`
   padding: 30px;
   color: ${props => props.theme.color.heroPrimary};
   background-color: ${props => props.theme.color.heroBackground};
-  height: 175px;
+  height: 145px;
 `
 
 const TitleAndButtons = styled.div`
