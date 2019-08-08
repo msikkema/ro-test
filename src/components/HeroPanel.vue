@@ -6,7 +6,7 @@ HeroWrapper
     ButtonWrapper.button-wrapper
       ButtonGroup
         Button(label='New Random Dog', :handleClick='handleNewDog')
-        Button(label='Save This Dog', :handleClick='makeAlert')
+        Button(label='Save This Dog', :handleClick='handleSaveDog')
 </template>
 
 <script>
@@ -48,7 +48,8 @@ export default {
   props: {
     title: String,
     buttons: Object,
-    handleNewDog: Function
+    handleNewDog: Function,
+    handleSaveDog: Function
   },
   methods: {
     makeAlert() {

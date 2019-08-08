@@ -3,7 +3,14 @@ ThemeProvider(:theme='theme')
   #app
     Navbar
     .divider
-      InfoPanel(:dog='currentDog', :handleNewDog='getNewRandomDog')
+      InfoPanel(
+        :dog='currentDog',
+        :handleNewDog='getNewRandomDog',
+        :handleSaveDog='saveDog'
+      )
+    ul
+      li(v-for='dog in savedDogs') {{ dog.displayName }}
+     
 </template>
 
 <script>
@@ -38,6 +45,11 @@ export default {
     async getNewRandomDog() {
       this.currentDog = await getRandomDog(this.seenDogIds)
       this.seenDogIds.push(this.currentDog.id)
+    },
+    saveDog() {
+      if (!this.savedDogs.includes(this.currentDog)) {
+        this.savedDogs.push(this.currentDog)
+      }
     }
   },
   data: function() {

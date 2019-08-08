@@ -1,5 +1,9 @@
 <template lang="pug">
-  HeroPanel(:title='dog && dog.displayName', :handleNewDog='handleNewDog')
+  HeroPanel(
+    :title='dog && dog.displayName',
+    :handleNewDog='handleNewDog',
+    :handleSaveDog='handleSaveDog'
+  )
 </template>
 
 <script>
@@ -10,7 +14,8 @@ export default {
   },
   props: {
     dog: Object,
-    handleNewDog: Function
+    handleNewDog: Function,
+    handleSaveDog: Function
   }
 }
 </script>
