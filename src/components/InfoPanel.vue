@@ -6,7 +6,7 @@
       :handleSaveDog='handleSaveDog'
     )
     div(v-if="dog")
-      DogPanel(:imageUrl='dog.imageUrl', :title='dog.displayName')
+      DogPanel(:imageUrl='dog.imageUrl', :title='dog.displayName' big)
 </template>
 
 <script>

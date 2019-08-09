@@ -2,30 +2,39 @@
 ThemeProvider(:theme='theme')
   #app
     Navbar
-    .divider
-      InfoPanel(
-        :dog='currentDog',
-        :handleNewDog='getNewRandomDog',
-        :handleSaveDog='saveDog'
-      )
-    ul
-      li(v-for='dog in savedDogs') {{ dog.displayName }}
-     
+    Split
+      .left
+        FavouritesPanel(:savedDogs='savedDogs')
+
+      .right
+        InfoPanel(
+          :dog='currentDog',
+          :handleNewDog='getNewRandomDog',
+          :handleSaveDog='saveDog'
+        )
 </template>
 
 <script>
 import { ThemeProvider } from 'vue-styled-components'
 import Navbar from './components/Navbar'
 import InfoPanel from './components/InfoPanel'
+import FavouritesPanel from './components/FavouritesPanel'
 import styled from 'vue-styled-components'
 import theme from './theme/reachOutTheme'
 import { StyledH1 } from './theme/headings'
 import { getRandomDog } from './services/dogService'
 
+const Split = styled.div`
+  display: flex;
+  height: 100%;
+  align-items: stretch;
 
-const Wrapper = styled.div`
-  background-color: ${props => props.theme.color.heroBackground};
-  min-height: 300px;
+  .left {
+    flex-grow: 0;
+  }
+  .right {
+    flex-grow: 1;
+  }
 `
 
 const TestHeading = styled(StyledH1)`
@@ -37,9 +46,10 @@ export default {
   components: {
     Navbar,
     ThemeProvider,
-    Wrapper,
+    Split,
     TestHeading,
-    InfoPanel
+    InfoPanel,
+    FavouritesPanel
   },
   methods: {
     async getNewRandomDog() {
@@ -70,6 +80,7 @@ export default {
 
 <style lang="scss">
 #app {
+  height: 100vh;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
