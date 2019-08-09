@@ -18,7 +18,7 @@ import { DeadCenter } from '../theme/positioning'
 
 const Wrapper = styled.div`
   width: 350px;
-  height: 100%;
+  min-height: 100%;
   color: ${props => props.theme.color.smallPanelPrimary};
   background-color: ${props => props.theme.color.smallPanelBackground};
 `

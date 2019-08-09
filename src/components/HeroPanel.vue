@@ -12,10 +12,10 @@ HeroWrapper
 <script>
 import styled from 'vue-styled-components'
 import { StyledH1 } from '../theme/headings'
-import { VerticalCenter, DeadCenter, AlignRight, ButtonGroup } from '../theme/positioning'
+import { VerticalCenter, DeadCenter, ButtonGroup } from '../theme/positioning'
 import Button from './Button'
 
-const ButtonWrapper = styled(AlignRight)`
+const ButtonWrapper = styled(DeadCenter)`
   padding-top: 30px;
   width: 100%;
 `

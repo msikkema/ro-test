@@ -1,8 +1,8 @@
 <template lang="pug">
 ThemeProvider(:theme='theme')
   #app
-    Navbar
-    Split
+    Navbar.navbar
+    Split.split
       .left
         FavouritesPanel(:savedDogs='savedDogs')
 
@@ -28,9 +28,11 @@ const Split = styled.div`
   display: flex;
   height: 100%;
   align-items: stretch;
+  background-color: ${props => props.theme.color.heroBackground};
 
   .left {
     flex-grow: 0;
+    overflow-y: auto;
   }
   .right {
     flex-grow: 1;
