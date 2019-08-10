@@ -4,7 +4,7 @@ ThemeProvider(:theme='theme')
     Navbar.navbar
     Split.split
       .left
-        FavouritesPanel(:savedDogs='savedDogs')
+        FavouritesPanel(:savedDogs='savedDogs', :handleRemoveDog='removedSavedDog')
 
       .right
         InfoPanel(
@@ -73,6 +73,9 @@ export default {
       if (!this.savedDogs.includes(this.currentDog)) {
         this.savedDogs.push(this.currentDog)
       }
+    },
+    removedSavedDog(targetId) {
+      this.savedDogs = this.savedDogs.filter(({ id }) => id !== targetId)
     }
   },
   data: function() {
@@ -86,7 +89,6 @@ export default {
   async mounted() {
     this.currentDog = await getRandomDog(this.seenDogIds)
     this.seenDogIds.push(this.currentDog.id)
-    console.log(this.currentDog)
   }
 }
 </script>

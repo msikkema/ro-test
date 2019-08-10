@@ -3,10 +3,12 @@
     HeadingWrapper
       Heading Your Favourite Dogs
     
-    DogWrapper(v-for='dog in savedDogs')
+    DogWrapper(v-for='dog in savedDogs' :key='dog.id')
       DogPanel(
+        :id='dog.id'
         :imageUrl='dog.imageUrl',
-        :title='dog.displayName'
+        :title='dog.displayName',
+        :handleRemoveDog='handleRemoveDog'
       )
 </template>
 
@@ -44,7 +46,8 @@ export default {
     DogWrapper
   },
   props: {
-    savedDogs: Array
+    savedDogs: Array,
+    handleRemoveDog: Function
   }
 }
 </script>
