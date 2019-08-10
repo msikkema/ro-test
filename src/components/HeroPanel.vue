@@ -2,11 +2,17 @@
 HeroWrapper
   TitleAndButtons.title-and-buttons
     TitleWrapper.title-wrapper
-      StyledH1 {{ title }}
+      StyledH1(v-if='title') {{ title }}
+      Spinner(v-else)
     ButtonWrapper.button-wrapper
       ButtonGroup
         Button(label='New Random Dog', :handleClick='handleNewDog')
-        Button(label='Save This Dog', :handleClick='handleSaveDog')
+        Button(
+          label='Save This Dog',
+          :handleClick='handleSaveDog',
+          :disable='isCurrentDogSaved',
+          disabledLabel='Saved'
+        )
 </template>
 
 <script>
@@ -14,8 +20,10 @@ import styled from 'vue-styled-components'
 import { StyledH1 } from '../theme/headings'
 import { VerticalCenter, DeadCenter, ButtonGroup } from '../theme/positioning'
 import Button from './Button'
+import Spinner from './Spinner'
 
 const ButtonWrapper = styled(DeadCenter)`
+  transition: ${props => props.theme.transition};
   padding-top: 30px;
   width: 100%;
 `
@@ -43,13 +51,15 @@ export default {
     TitleWrapper,
     ButtonWrapper,
     Button,
-    ButtonGroup
+    ButtonGroup,
+    Spinner
   },
   props: {
     title: String,
     buttons: Object,
     handleNewDog: Function,
-    handleSaveDog: Function
+    handleSaveDog: Function,
+    isCurrentDogSaved: Boolean
   },
   methods: {
     makeAlert() {

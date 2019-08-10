@@ -1,7 +1,7 @@
 <template lang="pug">
   Wrapper
     HeadingWrapper
-      Heading Your Favourite Dogs
+      Heading {{ headingMessage }}
     
     DogWrapper(v-for='dog in savedDogs' :key='dog.id')
       DogPanel(
@@ -19,6 +19,7 @@ import { StyledH2 } from '../theme/headings'
 import { DeadCenter } from '../theme/positioning'
 
 const Wrapper = styled.div`
+  transition: ${props => props.theme.transition};
   width: 350px;
   min-height: 100%;
   color: ${props => props.theme.color.smallPanelPrimary};
@@ -31,6 +32,7 @@ const Heading = styled(StyledH2)`
 
 const HeadingWrapper = styled(DeadCenter)`
   height: 60px;
+  text-align: center;
 `
 
 const DogWrapper = styled(DeadCenter)`
@@ -48,6 +50,14 @@ export default {
   props: {
     savedDogs: Array,
     handleRemoveDog: Function
+  },
+  computed: {
+    headingMessage() {
+      const num = this.savedDogs.length
+      return num > 0
+        ?`Your${num > 1 ? ` ${num}` : ''} favourite dog breed${num > 1 ? 's' : ''}`
+        : 'Start saving dog breeds to see them here'
+    }
   }
 }
 </script>

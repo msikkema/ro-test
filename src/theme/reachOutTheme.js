@@ -25,5 +25,6 @@ export default {
   breakpoints: {
     tablet: '720px',
     desktop: '1024px'
-  }
+  },
+  transition: 'all 0.8s ease'
 }

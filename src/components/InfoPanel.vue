@@ -3,10 +3,11 @@
     HeroPanel(
       :title='dog && dog.displayName',
       :handleNewDog='handleNewDog',
-      :handleSaveDog='handleSaveDog'
+      :handleSaveDog='handleSaveDog',
+      :isCurrentDogSaved='isCurrentDogSaved'
     )
-    DogPanelWrapper(v-if="dog")
-      DogPanel(:imageUrl='dog.imageUrl', :title='dog.displayName' big)
+    DogPanelWrapper
+      DogPanel(v-if='dog', :imageUrl='dog.imageUrl', :title='dog.displayName' big)
 </template>
 
 <script>
@@ -14,6 +15,7 @@ import styled from 'vue-styled-components'
 import HeroPanel from './HeroPanel'
 import DogPanel from './DogPanel'
 import { DeadCenter } from '../theme/positioning'
+import Spinner from './Spinner'
 
 const InfoPanelWrapper = styled.div``
 
@@ -28,12 +30,14 @@ export default {
     HeroPanel,
     DogPanel,
     DeadCenter,
-    DogPanelWrapper
+    DogPanelWrapper,
+    Spinner
   },
   props: {
     dog: Object,
     handleNewDog: Function,
-    handleSaveDog: Function
+    handleSaveDog: Function,
+    isCurrentDogSaved: Boolean
   }
 }
 </script>
