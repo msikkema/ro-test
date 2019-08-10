@@ -1,6 +1,6 @@
 <template lang="pug">
 ThemeProvider(:theme='theme')
-  #app
+  App
     Navbar.navbar
     Split.split
       .left
@@ -24,15 +24,25 @@ import theme from './theme/reachOutTheme'
 import { StyledH1 } from './theme/headings'
 import { getRandomDog } from './services/dogService'
 
+const App = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+`
+
 const Split = styled.div`
   display: flex;
-  height: 100%;
+  flex: 1 1 auto;
   align-items: stretch;
   background-color: ${props => props.theme.color.heroBackground};
+  overflow: hidden;
 
   .left {
-    flex-grow: 0;
     overflow-y: auto;
+    flex-grow: 0;
   }
   .right {
     flex-grow: 1;
@@ -46,6 +56,7 @@ const TestHeading = styled(StyledH1)`
 export default {
   name: 'app',
   components: {
+    App,
     Navbar,
     ThemeProvider,
     Split,
@@ -79,12 +90,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  height: 100vh;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-</style>
