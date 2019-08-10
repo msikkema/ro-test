@@ -3,7 +3,7 @@
     LogoWrapper.logo-wrapper
       img(src='../assets/reachout_logo.svg')
     TitleWrapper.title-wrapper
-      Title ReachOut Dog Selector
+      Title ReachOut Dogs
 </template>
 
 <script>
@@ -16,7 +16,6 @@ const TitleWrapper = styled(DeadCenter)`
 `
 
 const Title = styled(StyledH1)`
-  font-size: 32px;
   font-weight: normal;
 `
 

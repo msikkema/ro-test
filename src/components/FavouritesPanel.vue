@@ -2,6 +2,12 @@
   Wrapper
     HeadingWrapper
       Heading {{ headingMessage }}
+
+    MobileOnly
+      Button(
+        label='Close Favourites',
+        :handleClick='handleToggleFavouritesModal'
+      )
     
     DogWrapper(v-for='dog in savedDogs' :key='dog.id')
       DogPanel(
@@ -17,10 +23,25 @@ import styled from 'vue-styled-components'
 import DogPanel from '../components/DogPanel'
 import { StyledH2 } from '../theme/headings'
 import { DeadCenter } from '../theme/positioning'
+import Button from './Button'
+
+const MobileOnly = styled(DeadCenter)`
+  padding: 15px;
+
+  @media(min-width: ${props => props.theme.breakpoints.tablet}) {
+    display: none;
+  }
+`
 
 const Wrapper = styled.div`
+  width: 100%;
+
+  @media(min-width: ${props => props.theme.breakpoints.tablet}) {
+    width: 350px;
+  }
+
+  
   transition: ${props => props.theme.transition};
-  width: 350px;
   min-height: 100%;
   color: ${props => props.theme.color.smallPanelPrimary};
   background-color: ${props => props.theme.color.smallPanelBackground};
@@ -45,11 +66,14 @@ export default {
     DogPanel,
     Heading,
     HeadingWrapper,
-    DogWrapper
+    DogWrapper,
+    Button,
+    MobileOnly
   },
   props: {
     savedDogs: Array,
-    handleRemoveDog: Function
+    handleRemoveDog: Function,
+    handleToggleFavouritesModal: Function
   },
   computed: {
     headingMessage() {

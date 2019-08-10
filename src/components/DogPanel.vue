@@ -28,11 +28,16 @@ const PanelWrapper = styled('div', panelProps)`
   background-image: ${props => props && `url(${props.imageUrl})`};
   background-repeat: no-repeat;
   background-size: cover;
-  height: ${props => props.big ? '450' : '300'}px;
-  width: ${props => props.big ? '450' : '300'}px;
+  height: 250px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media(min-width: ${props => props.theme.breakpoints.tablet}) {
+    height: ${props => props.big ? '450' : '300'}px;
+    width: ${props => props.big ? '450' : '300'}px;
+  }
 `
 
 const Label = styled(StyledH2)`

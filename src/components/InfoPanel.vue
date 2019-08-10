@@ -4,7 +4,8 @@
       :title='dog && dog.displayName',
       :handleNewDog='handleNewDog',
       :handleSaveDog='handleSaveDog',
-      :isCurrentDogSaved='isCurrentDogSaved'
+      :isCurrentDogSaved='isCurrentDogSaved',
+      :handleToggleFavouritesModal='handleToggleFavouritesModal'
     )
     DogPanelWrapper
       DogPanel(v-if='dog', :imageUrl='dog.imageUrl', :title='dog.displayName' big)
@@ -37,7 +38,8 @@ export default {
     dog: Object,
     handleNewDog: Function,
     handleSaveDog: Function,
-    isCurrentDogSaved: Boolean
+    isCurrentDogSaved: Boolean,
+    handleToggleFavouritesModal: Function
   }
 }
 </script>

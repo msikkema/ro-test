@@ -6,15 +6,24 @@ ThemeProvider(:theme='theme')
       .left
         FavouritesPanel(
           :savedDogs='savedDogs',
-          :handleRemoveDog='removedSavedDog'
+          :handleRemoveDog='removedSavedDog',
+          :handleToggleFavouritesModal='toggleFavouritesModal'
         )
 
       .right
         InfoPanel(
+          v-if='!showModalFavourites',
           :dog='currentDog',
           :handleNewDog='getNewRandomDog',
           :handleSaveDog='saveDog',
-          :isCurrentDogSaved='isCurrentDogSaved'
+          :isCurrentDogSaved='isCurrentDogSaved',
+          :handleToggleFavouritesModal='toggleFavouritesModal'
+        )
+        FavouritesPanel(
+          v-else,
+          :savedDogs='savedDogs',
+          :handleRemoveDog='removedSavedDog'
+          :handleToggleFavouritesModal='toggleFavouritesModal'
         )
 </template>
 
@@ -47,9 +56,18 @@ const Split = styled.div`
   .left {
     overflow-y: auto;
     flex-grow: 0;
+    display: none;
+
+    @media(min-width: ${props => props.theme.breakpoints.tablet}) {
+      display: block;
+    }
   }
   .right {
     flex-grow: 1;
+    overflow-y: auto;
+
+    @media(min-width: ${props => props.theme.breakpoints.tablet}) {
+    }
   }
 `
 
@@ -75,12 +93,15 @@ export default {
       this.seenDogIds.push(this.currentDog.id)
     },
     saveDog() {
-      if (!this.savedDogs.includes(this.currentDog)) {
+      if (this.currentDog && !this.savedDogs.includes(this.currentDog)) {
         this.savedDogs.push(this.currentDog)
       }
     },
     removedSavedDog(targetId) {
       this.savedDogs = this.savedDogs.filter(({ id }) => id !== targetId)
+    },
+    toggleFavouritesModal() {
+      this.showModalFavourites = !this.showModalFavourites
     }
   },
   computed: {
@@ -96,7 +117,8 @@ export default {
       theme,
       currentDog: null,
       seenDogIds: [],
-      savedDogs: []
+      savedDogs: [],
+      showModalFavourites: false
     }
   },
   async mounted() {

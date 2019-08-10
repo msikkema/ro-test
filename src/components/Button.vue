@@ -22,6 +22,7 @@ const ButtonWrapper = styled('a', buttonStyleProps)`
   font-size: 20px;
   font-weight: 700;
   cursor: pointer;
+  text-align: center;
   ${props => props.disable && disabledStyle}
 `
 

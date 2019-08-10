@@ -13,6 +13,12 @@ HeroWrapper
           :disable='isCurrentDogSaved',
           disabledLabel='Saved'
         )
+        ShowInMobile
+          Button(
+            label='Show my Favourites',
+            :handleClick='handleToggleFavouritesModal'
+          )
+        
 </template>
 
 <script>
@@ -21,6 +27,12 @@ import { StyledH1 } from '../theme/headings'
 import { VerticalCenter, DeadCenter, ButtonGroup } from '../theme/positioning'
 import Button from './Button'
 import Spinner from './Spinner'
+
+const ShowInMobile = styled.span`
+  @media(min-width: ${props => props.theme.breakpoints.tablet}) {
+    display: none;
+  }
+`
 
 const ButtonWrapper = styled(DeadCenter)`
   transition: ${props => props.theme.transition};
@@ -36,7 +48,7 @@ const HeroWrapper = styled(VerticalCenter)`
   padding: 30px;
   color: ${props => props.theme.color.heroPrimary};
   background-color: ${props => props.theme.color.heroBackground};
-  height: 145px;
+  min-height: 150px;
 `
 
 const TitleAndButtons = styled.div`
@@ -52,14 +64,16 @@ export default {
     ButtonWrapper,
     Button,
     ButtonGroup,
-    Spinner
+    Spinner,
+    ShowInMobile
   },
   props: {
     title: String,
     buttons: Object,
     handleNewDog: Function,
     handleSaveDog: Function,
-    isCurrentDogSaved: Boolean
+    isCurrentDogSaved: Boolean,
+    handleToggleFavouritesModal: Function
   },
   methods: {
     makeAlert() {
