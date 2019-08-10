@@ -65,9 +65,6 @@ const Split = styled.div`
   .right {
     flex-grow: 1;
     overflow-y: auto;
-
-    @media(min-width: ${props => props.theme.breakpoints.tablet}) {
-    }
   }
 `
 

@@ -6,9 +6,9 @@ HeroWrapper
       Spinner(v-else)
     ButtonWrapper.button-wrapper
       ButtonGroup
-        Button(label='New Random Dog', :handleClick='handleNewDog')
+        Button(label='New Random Breed', :handleClick='handleNewDog')
         Button(
-          label='Save This Dog',
+          label='Save This Breed',
           :handleClick='handleSaveDog',
           :disable='isCurrentDogSaved',
           disabledLabel='Saved'

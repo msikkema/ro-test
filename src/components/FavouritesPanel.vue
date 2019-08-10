@@ -80,7 +80,7 @@ export default {
       const num = this.savedDogs.length
       return num > 0
         ?`Your${num > 1 ? ` ${num}` : ''} favourite dog breed${num > 1 ? 's' : ''}`
-        : 'Start saving dog breeds to see them here'
+        : 'No favourite breeds yet'
     }
   }
 }
