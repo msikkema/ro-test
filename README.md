@@ -8,7 +8,9 @@ There is also a suitable mobile view included for the application.
 
 The testing was somewhat difficult - regular JS (ie the dogService) was fine, but mounting and testing components turned into a 'check google every 5 minutes' affair due to my lack of Vue knowledge.
 
-Overall it was an enjoyable experience - developing the Vue components was fun and relatively easy (it feels like a nice cross between Angular 1x and React, which isn't surprising given Evan You's background), but I need to do some research on how to better test the components. 
+Overall it was an enjoyable experience - developing the Vue components was fun and relatively easy (it feels like a nice cross between Angular 1x and React, which isn't surprising given Evan You's background), but I need to do some research on how to better test the components.
+
+To check it, run `yarn serve` and go to `http://localhost:8080`
 
 -- Matt
 
