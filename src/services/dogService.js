@@ -3,14 +3,15 @@ import Dog from '../models/dog'
 
 const URL = 'https://dog.ceo/api'
 
-let notYetSeen = null
+let hasInitiated = false
+let notYetSeen = []
 const seen = []
 const getRandomItem = arr => arr[Math.floor(Math.random() * arr.length)]
 
 export const init = async () => {
   // Flatten
   const { data: { message: allBreeds } } = await Axios.get(`${URL}/breeds/list/all`)
-
+  
   Object.keys(allBreeds).forEach(breedName => {
     if (allBreeds[breedName].length > 0) {
       // Breed has subkeys
@@ -23,10 +24,16 @@ export const init = async () => {
   })
 }
 
+export const getNotYetSeen = notYetSeen
+
+export const setHasInitiated = val => {
+  hasInitiated = val
+}
+
 export const getRandomDog = async () => {
-  if (notYetSeen == null) {
-    notYetSeen = []
+  if (!hasInitiated) {
     await init()
+    hasInitiated = true
   }
 
   const randomDogName = getRandomItem(notYetSeen);
